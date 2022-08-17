@@ -3,13 +3,13 @@ import time
 from datetime import datetime
 
 
-SERVER = socket.gethostbyname(socket.gethostname())
-PORT = 5500
+# SERVER = socket.gethostbyname(socket.gethostname())
+SERVER = '127.0.0.1'
+PORT = 3000
 ADDR = (SERVER, PORT)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
-
 
 def start():
     server.listen()
@@ -17,7 +17,7 @@ def start():
     while True:
         now = datetime.now()
         now_str = now.strftime("%Y/%m/%d %H:%M:%S")
-        print(f'The server is on ({now_str}) ...')
+        print(f'The server is on. IP:{SERVER} PORT:{PORT} DATE/TIME:{now_str} ...')
         time.sleep(10)
 
 
