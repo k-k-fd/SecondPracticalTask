@@ -1,24 +1,21 @@
-import socket
-import time
+import websockets
+import asyncio
 from datetime import datetime
 
-
-# SERVER = socket.gethostbyname(socket.gethostname())
 SERVER = '127.0.0.1'
-PORT = 3000
-ADDR = (SERVER, PORT)
+PORT = 8000
+SLEEP_TIME = 10
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(ADDR)
+now = datetime.now()
+now_str = now.strftime("%Y/%m/%d %H:%M:%S")
+msg = f'The server is on. IP:{SERVER} PORT:{PORT} DATE/TIME:{now_str} ...'
 
-def start():
-    server.listen()
-    print(f'Server has started on {SERVER}')
+async def handler(websocket):
     while True:
-        now = datetime.now()
-        now_str = now.strftime("%Y/%m/%d %H:%M:%S")
-        print(f'The server is on. IP:{SERVER} PORT:{PORT} DATE/TIME:{now_str} ...')
-        time.sleep(10)
+        await websocket.send(msg)
+        await asyncio.sleep(SLEEP_TIME)
 
+start = websockets.serve(handler, SERVER, PORT)
+asyncio.get_event_loop().run_until_complete(start)
+asyncio.get_event_loop().run_forever()
 
-start()
