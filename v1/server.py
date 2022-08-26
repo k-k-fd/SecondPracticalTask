@@ -1,8 +1,6 @@
 import websockets
 import asyncio
 from datetime import datetime
-from pyngrok import ngrok
-
 
 SERVER = '127.0.0.1'
 PORT = 8000
@@ -69,8 +67,3 @@ def main():
         #     print(msg_create(ngrok_url))
         #     time.sleep(SLEEP_TIME)
 
-
-if __name__ == "__main__":
-    # asyncio.run(main())
-    main()
-'''
