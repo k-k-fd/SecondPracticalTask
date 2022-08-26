@@ -1,11 +1,14 @@
 import websockets
 import asyncio
 from datetime import datetime
+from pyngrok import ngrok
 
 SERVER = '127.0.0.1'
 PORT = 8000
 SLEEP_TIME = 3
 
+def calc_ra():
+    return None
 
 def msg_create(ngrok_link):
     now = datetime.now()
@@ -21,7 +24,6 @@ async def echo(websocket):
         await websocket.send(msg_create_no_link())
         print(msg_create_no_link())
         await asyncio.sleep(SLEEP_TIME)
-
 def main():
     ngrok_conn = ngrok.connect(PORT, bind_tls=True)
     ngrok_url = ngrok_conn.public_url
@@ -66,4 +68,4 @@ def main():
         # while True:
         #     print(msg_create(ngrok_url))
         #     time.sleep(SLEEP_TIME)
-
+'''
