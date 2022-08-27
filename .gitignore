@@ -4,5 +4,7 @@
 /.idea/SecondPracticalTask.iml
 /.idea/vcs.xml
 /.idea/misc.xml
-/v1/client_server/client.py
-/v1/client_server/server.py
+/draft/client_server/client.py
+/draft/client_server/server.py
+/draft/client_server/client.py
+/draft/client_server/server.py
