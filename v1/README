@@ -1,3 +1,9 @@
+# files
+# 1. srv_longlat.py: I wrote this first, since couldn't find info on ra/dec
+# 2. srv_radec.py: I wrote this after "srv_longlat.py"
+# 3. srv_radec_skyfield.py: Then I found skyfield, also realised that
+"ephem" module that I used in "srv_radec.py" is planned to be decommissioned
+
 # ngrok
 # https://ngrok.com/docs
 # https://dashboard.ngrok.com/get-started/setup
