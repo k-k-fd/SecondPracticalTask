@@ -12,7 +12,7 @@ OBSRVR_LAT = '43.6532'
 OBSRVR_DATE = datetime.now()
 
 
-def cal_radec():
+def calc_radec():
     obsrvr = ephem.Observer()
     obsrvr.lon, obsrvr.lat = OBSRVR_LONG, OBSRVR_LAT
     obsrvr.date = OBSRVR_DATE
@@ -28,7 +28,7 @@ def msg_create_ip_time():
 
 
 def msg_create():
-    ra, dec = cal_radec()[0], cal_radec()[1]
+    ra, dec = calc_radec()[0], calc_radec()[1]
     return f'RA: {ra}; DEC: {dec}'
 
 
