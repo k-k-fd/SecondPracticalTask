@@ -9,16 +9,15 @@ PORT = 8000
 SLEEP_TIME = 10
 OBSRVR_LONG = '79.3832'
 OBSRVR_LAT = '43.6532'
-OBSRVR_DATE = datetime.now()
 
 
 def calc_radec():
     obsrvr = ephem.Observer()
     obsrvr.lon, obsrvr.lat = OBSRVR_LONG, OBSRVR_LAT
-    obsrvr.date = OBSRVR_DATE
+    obsrvr.date = datetime.now()
     moon = ephem.Moon()
     moon.compute(obsrvr)
-    return moon.ra, moon.dec
+    return datetime.now(), moon.ra, moon.dec
 
 
 def msg_create_ip_time():
@@ -28,8 +27,8 @@ def msg_create_ip_time():
 
 
 def msg_create():
-    ra, dec = calc_radec()[0], calc_radec()[1]
-    return f'RA: {ra}; DEC: {dec}'
+    dt, ra, dec = calc_radec()[0], calc_radec()[1], calc_radec()[2]
+    return f'DATE/TIME: {dt}; RA: {ra}; DEC: {dec}'
 
 
 async def echo(websocket):
