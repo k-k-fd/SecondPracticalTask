@@ -11,12 +11,15 @@ PLANET_DESTINATION = 'moon'
 
 
 def calc_radecdist(plnt_dst, plnt_src):
+    t = load.timescale().now()
     moon, earth = load.planets[plnt_dst], load.planets[plnt_src]
-    return moon.ra, moon.dec, moon.dist
+    obsrvr = earth.at(t).observe(moon)
+    ra, dec, dist = obsrvr.radec()
+    return ra, dec, dist
 
 
 def msg_create(planet_dst, planet_src):
-    ra, dec, dst = calc_radecdist(planet_dst, planet_src)
+    ra, dec, dist = calc_radecdist(planet_dst, planet_src)
     return f'RA: {ra}; DEC: {dec}'
 
 
