@@ -1,0 +1,3 @@
+pyngrok==5.1.0
+skyfield==1.41
+websockets==10.3
